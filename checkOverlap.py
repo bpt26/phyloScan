@@ -22,19 +22,10 @@ def checkOverlap():
         for k in range(int(splitLine[1]),int(splitLine[2])+1):
             coordToGene[str(splitLine[0])+'-'+str(k)] = splitLine[3]
 
-    knownToWiki = {}
-    for line in open('knownGeneWiki.txt'):
-        splitLine = (line.strip()).split('\t')
-        knownToWiki[splitLine[0]] = splitLine[1]
-
-    for line in open('knownGeneHg19.txt'):
+    for line in open('histones.bed'):
         splitLine = (line.strip()).split('\t')
         for k in range(int(splitLine[1]),int(splitLine[2])+1):
-            if not splitLine[0]+'-'+str(splitLine[1]) in coordToGene:
-                if splitLine[3] in knownToWiki:
-                    coordToGene[splitLine[0]+'-'+str(k)] = knownToWiki[splitLine[3]]
-                else:
-                    coordToGene[splitLine[0]+'-'+str(k)] = str(splitLine[3])
+            coordToGene[str(splitLine[0])+'-'+str(k)] = splitLine[3]
 
     for chrom in ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','X']:
         for line in open('chr'+chrom+'.phyloScan.15.0.-3.0.30.0.2.0.txt'):
