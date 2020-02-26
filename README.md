@@ -6,10 +6,10 @@ to set up:
 - XXX need to write up all the other files added...
 
 
-to run:
+to run:  
 *python phyloScan.py flankLength flankThreshold consLength consThreshold*  
 *parallel -j X < myBashScripts.mpi*  
-*blat hg19.2bit all_matches.fa >> all_matches.psl
+*blat hg19.2bit all_matches.fa >> all_matches.psl*  
 *cat \*.overlap > all_overlap.txt*
 
 
